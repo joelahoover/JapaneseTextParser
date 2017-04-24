@@ -1,0 +1,6 @@
+
+# Generate the regular expression
+regex b [a*];
+
+# Write it out to a file
+write att > lexicon.fst
