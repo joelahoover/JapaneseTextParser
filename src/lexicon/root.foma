@@ -1,7 +1,4 @@
 
-# Generate the regular expression
-regex [b [a*] [b:c | 0]]+;
-
 # Read in the lexicon
 read lexc root.lexc
 define Lexicon
