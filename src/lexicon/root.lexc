@@ -1,0 +1,29 @@
+!!! Root of Japanese Lexicon - root.lexc !!!
+
+Multichar_Symbols +Anim -Anim +Nom +Gen +Dat +Acc
+
+LEXICON Root
+
+Noun ;
+Verb ;
+
+
+LEXICON Noun
+
+本 Ninf;
+犬 Ninf;
+
+
+LEXICON Ninf
+
++Nom:が #;
++Gen:の #;
++Dat:に #;
++Acc:を #;
+
+
+LEXICON Verb
+
+ある:-Anim #;
+いる:+Anim #;
+

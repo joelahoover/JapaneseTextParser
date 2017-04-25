@@ -2,5 +2,11 @@
 # Generate the regular expression
 regex [b [a*] [b:c | 0]]+;
 
+# Read in the lexicon
+read lexc root.lexc
+define Lexicon
+
 # Write it out to a file
+regex Lexicon;
 write att > lexicon.fst
+
