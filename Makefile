@@ -21,7 +21,7 @@ lexicon: $(BUILD)/lexicon.fst
 python: $(PYBUILDFILES)
 
 run: $(PYBUILDFILES)
-	cd $(BUILD); python
+	cd $(BUILD); python -i -c 'from parser import *'
 
 test: all $(PYTESTFILES)
 	@#cd $(BUILD); python main.py
