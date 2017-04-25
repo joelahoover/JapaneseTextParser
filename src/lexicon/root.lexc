@@ -10,8 +10,18 @@ Verb ;
 
 LEXICON Noun
 
-本 Ninf;
-犬 Ninf;
+本 Ninf-A;
+犬 Ninf+A;
+
+
+LEXICON Ninf+A
+
++Anim:0 Ninf;
+
+
+LEXICON Ninf-A
+
+-Anim:0 Ninf;
 
 
 LEXICON Ninf
