@@ -9,7 +9,7 @@ PYFILES      := $(wildcard $(PYDIR)/*.py)
 PYBUILDFILES := $(addprefix $(BUILD)/,$(PYFILES:$(PYDIR)/%=%))
 
 
-.PHONY: all setup lexicon python test clean
+.PHONY: all setup lexicon python run test clean
 
 all: setup lexicon python
 
@@ -20,7 +20,12 @@ lexicon: $(BUILD)/lexicon.fst
 
 python: $(PYBUILDFILES)
 
+run: $(PYBUILDFILES)
+	cd $(BUILD); python
+
 test: all $(PYTESTFILES)
+	@#cd $(BUILD); python main.py
+	cd $(BUILD); py.test
 
 clean:
 	rm -fr $(BUILD)
