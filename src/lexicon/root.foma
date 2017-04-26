@@ -4,6 +4,6 @@ read lexc root.lexc
 define Lexicon
 
 # Write it out to a file
-regex Lexicon;
+regex Lexicon ["^":0 Lexicon]*;
 write att > lexicon.fst
 
