@@ -115,7 +115,7 @@ class ATTFST:
         start = 0
         while start < len(word):
             t = word[start]
-            for length in xrange(1, len(word) - start + 1):
+            for length in range(1, len(word) - start + 1):
                 if word[start:start+length] in self.alphabet:
                     t = word[start:start+length]
             tokens.append(t)

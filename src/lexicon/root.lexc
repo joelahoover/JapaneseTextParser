@@ -26,10 +26,15 @@ LEXICON Ninf-A
 
 LEXICON Ninf
 
-+Nom:が #;
-+Gen:の #;
-+Dat:に #;
-+Acc:を #;
++Nom:が NP;
++Gen:の NP;
++Dat:に NP;
++Acc:を NP;
+
+
+LEXICON NP
+
++NP:0 #;
 
 
 LEXICON Verb
@@ -50,12 +55,18 @@ LEXICON v_ru
 
 LEXICON v1_conj
 
-+Pres:る #;
-+Past:た #;
++Pres:る IV;
++Past:た IV;
 
 
 LEXICON v_ru_conj
 
-+Pres:る #;
-+Past:った #;
++Pres:る IV;
++Past:った IV;
+
+
+LEXICON IV
+
++IV:0 #;
+
 
