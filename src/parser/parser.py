@@ -105,3 +105,12 @@ class Parser(object):
 			trees += ts
 		return trees
 
+	def morph_character_parsing(self, text):
+		"""
+		Extracts the words from the text, performs morphological analysis on the words, and then parses the text character by character.
+		"""
+		lexRules = self.morphword_pairs_to_rules(self.get_all_words(text))
+		g = grammar.FeatureGrammar.fromstring(self.grammarText + lexRules)
+		p =  parse.FeatureChartParser(g)
+		return p.parse(text)
+

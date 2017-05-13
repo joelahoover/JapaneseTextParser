@@ -46,3 +46,15 @@ def test_morph_parse():
 				(IV[-ANIM,PRED='ある',TENSE='past'] ある-Anim+Past+IV)))
 		""", read_node=FeatStructNonterminal)])
 
+def test_character_parse1():
+	trees = parser.morph_parse(u'犬の本があった')
+	assert len(trees) >= 1
+	return (trees, [Tree.fromstring(u"""
+		(S[TENSE='past']
+			(NP[-ANIM,CASE='nom']
+				(NP[+ANIM,CASE='gen',PRED='犬'] 犬 の)
+				(NP[-ANIM,CASE='nom',PRED='本'] 本 が))
+			(VP[-ANIM,TENSE='past']
+				(IV[-ANIM,PRED='ある',TENSE='past'] あ っ た)))
+		""", read_node=FeatStructNonterminal)])
+
