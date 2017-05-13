@@ -3,7 +3,15 @@
 read lexc root.lexc
 define Lexicon
 
-# Write it out to a file
-regex Lexicon ["^":0 Lexicon]*;
+# Write out lexicon
+regex Lexicon;
 write att > lexicon.fst
+
+# Create and write out segmenter
+regex Lexicon ["^":0 Lexicon]*;
+write att > segmenter.fst
+
+# Create and write out the all word recognizer
+regex [0:?*] Lexicon [0:?*];
+write att > allwords.fst
 

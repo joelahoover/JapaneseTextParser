@@ -6,13 +6,9 @@ import attapply
 
 grammarText = u"""
 %start S
-# S expansion productions
 S[TENSE=?t] -> NP[ANIM=?a, CASE=nom] VP[ANIM=?a, TENSE=?t]
-# NP expansion productions
 NP[ANIM=?a, CASE=?c] -> NP[CASE=gen] NP[ANIM=?a, CASE=?c]
-# VP expansion productions
 VP[TENSE=?t, ANIM=?a] -> IV[TENSE=?t, ANIM=?a]
-# Lexicon
 """
 
 featureMap = {
@@ -31,6 +27,8 @@ featureMap = {
 class Parser(object):
 	def __init__(self):
 		self.lexicon = attapply.ATTFST('lexicon.fst')
+		self.segmenter = attapply.ATTFST('segmenter.fst')
+		self.allwords = attapply.ATTFST('allwords.fst')
 		self.grammarText = grammarText
 		self.tagPrefix = "tag"
 
@@ -38,11 +36,11 @@ class Parser(object):
 		"""
 		Returns a list of the possible morphological analysis for a given string of text.
 		"""
-		return map(lambda x: x[0], self.lexicon.apply(text, dir = 'up'))
+		return map(lambda x: x[0], self.segmenter.apply(text, dir = 'up'))
 
 	def words_to_rules(self, words):
 		"""
-		Returns a tuple contining a string of the grammar rules and a list tuples of tags and words
+		Returns a tuple contining a string of the grammar rules and a list tuples of tags and words.
 		"""
 		rules = ""
 		tags = []
