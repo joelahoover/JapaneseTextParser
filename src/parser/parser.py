@@ -8,11 +8,12 @@ grammarText = u"""
 %start S
 S[TENSE=?t] -> NP[ANIM=?a, CASE=nom] VP[ANIM=?a, TENSE=?t]
 NP[ANIM=?a, CASE=?c] -> NP[CASE=gen] NP[ANIM=?a, CASE=?c]
-VP[TENSE=?t, ANIM=?a] -> IV[TENSE=?t, ANIM=?a]
+VP[TENSE=?t, ANIM=?a] -> V[TENSE=?t, ANIM=?a, DOBJ=None]
+VP[TENSE=?t, ANIM=?a] -> NP[CASE=?c] V[TENSE=?t, ANIM=?a, DOBJ=?c]
 """
 
 featureMap = {
-		"+IV": "*type* = IV",
+		"+V": "*type* = V",
 		"+NP": "*type* = NP",
 		"+Anim": "ANIM = True",
 		"-Anim": "ANIM = False",
@@ -21,7 +22,8 @@ featureMap = {
 		"+Dat": "CASE = dat",
 		"+Acc": "CASE = acc",
 		"+Pres": "TENSE = pres",
-		"+Past": "TENSE = past"
+		"+Past": "TENSE = past",
+		"+Dobj": "DOBJ = acc"
 }
 
 class Parser(object):

@@ -1,6 +1,6 @@
 !!! Root of Japanese Lexicon - root.lexc !!!
 
-Multichar_Symbols +Anim -Anim +Nom +Gen +Dat +Acc +Pres +Past
+Multichar_Symbols +Anim -Anim +Nom +Gen +Dat +Acc +Pres +Past +Dobj
 
 LEXICON Root
 
@@ -12,6 +12,7 @@ LEXICON Noun
 
 本 Ninf-A;
 犬 Ninf+A;
+ラーメン Ninf-A;
 
 
 LEXICON Ninf+A
@@ -41,6 +42,7 @@ LEXICON Verb
 
 ある-Anim:あ v_ru_conj;
 いる+Anim:い v1_conj;
+食べる+Dobj:食べ  v_ru_conj;
 
 
 LEXICON v1
@@ -55,18 +57,18 @@ LEXICON v_ru
 
 LEXICON v1_conj
 
-+Pres:る IV;
-+Past:た IV;
++Pres:る V;
++Past:た V;
 
 
 LEXICON v_ru_conj
 
-+Pres:る IV;
-+Past:った IV;
++Pres:る V;
++Past:った V;
 
 
-LEXICON IV
+LEXICON V
 
-+IV:0 #;
++V:0 #;
 
 

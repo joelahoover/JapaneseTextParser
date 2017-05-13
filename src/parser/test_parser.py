@@ -13,25 +13,25 @@ def test_morph1():
 
 def test_morph2():
 	splitted = parser.morphological_split(u'犬がいる')
-	assert set(splitted) == set([u'犬+Anim+Nom+NP^いる+Anim+Pres+IV'])
+	assert set(splitted) == set([u'犬+Anim+Nom+NP^いる+Anim+Pres+V'])
 
 def test_morph3():
 	splitted = parser.morphological_split(u'あった')
-	assert set(splitted) == set([u'ある-Anim+Past+IV'])
+	assert set(splitted) == set([u'ある-Anim+Past+V'])
 
 def test_allwords1():
 	words = parser.get_all_words(u'犬があった')
-	assert set(words) == set([(u'犬+Anim+Nom+NP',u'犬が'), (u'ある-Anim+Past+IV',u'あった')])
+	assert set(words) == set([(u'犬+Anim+Nom+NP',u'犬が'), (u'ある-Anim+Past+V',u'あった')])
 
 def test_allwordsrules1():
-	words = [(u'ある-Anim+Past+IV',u'あった'), (u'犬+Anim+Nom+NP',u'犬が')]
-	assert parser.morphword_pairs_to_rules(words) == u"\n[ANIM = False,TENSE = past,*type* = IV,PRED = 'ある'] -> 'あ' 'っ' 'た'\n[ANIM = True,CASE = nom,*type* = NP,PRED = '犬'] -> '犬' 'が'"
+	words = [(u'ある-Anim+Past+V',u'あった'), (u'犬+Anim+Nom+NP',u'犬が')]
+	assert parser.morphword_pairs_to_rules(words) == u"\n[ANIM = False,TENSE = past,*type* = V,PRED = 'ある'] -> 'あ' 'っ' 'た'\n[ANIM = True,CASE = nom,*type* = NP,PRED = '犬'] -> '犬' 'が'"
 
 def test_features1():
-	assert parser.words_to_rules([u'犬+Anim+Nom+NP',u'いる+Anim+Pres+IV']) == (u'\n[ANIM = True,CASE = nom,*type* = NP,PRED = \'犬\'] -> \'tag1\'\n[ANIM = True,TENSE = pres,*type* = IV,PRED = \'いる\'] -> \'tag2\'', [('tag1',u'犬+Anim+Nom+NP'), ('tag2',u'いる+Anim+Pres+IV')])
+	assert parser.words_to_rules([u'犬+Anim+Nom+NP',u'いる+Anim+Pres+V']) == (u'\n[ANIM = True,CASE = nom,*type* = NP,PRED = \'犬\'] -> \'tag1\'\n[ANIM = True,TENSE = pres,*type* = V,PRED = \'いる\'] -> \'tag2\'', [('tag1',u'犬+Anim+Nom+NP'), ('tag2',u'いる+Anim+Pres+V')])
 
 def test_parse1():
-	parse = parser.parse_sentence(u'犬+Anim+Nom+NP^いる+Anim+Pres+IV');
+	parse = parser.parse_sentence(u'犬+Anim+Nom+NP^いる+Anim+Pres+V');
 	assert len(parse) >= 1
 
 def test_morph_parse():
@@ -43,7 +43,7 @@ def test_morph_parse():
 				(NP[+ANIM,CASE='gen',PRED='犬'] 犬+Anim+Gen+NP)
 				(NP[-ANIM,CASE='nom',PRED='本'] 本-Anim+Nom+NP))
 			(VP[-ANIM,TENSE='past']
-				(IV[-ANIM,PRED='ある',TENSE='past'] ある-Anim+Past+IV)))
+				(V[-ANIM,PRED='ある',TENSE='past'] ある-Anim+Past+IV)))
 		""", read_node=FeatStructNonterminal)])
 
 def test_character_parse1():
@@ -55,6 +55,6 @@ def test_character_parse1():
 				(NP[+ANIM,CASE='gen',PRED='犬'] 犬 の)
 				(NP[-ANIM,CASE='nom',PRED='本'] 本 が))
 			(VP[-ANIM,TENSE='past']
-				(IV[-ANIM,PRED='ある',TENSE='past'] あ っ た)))
+				(V[-ANIM,PRED='ある',TENSE='past'] あ っ た)))
 		""", read_node=FeatStructNonterminal)])
 
