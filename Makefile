@@ -22,7 +22,7 @@ lexicon: $(FSTFILES)
 python: $(PYBUILDFILES)
 
 run: $(PYBUILDFILES)
-	cd $(BUILD); python3 -i -c 'from parser import *'
+	cd $(BUILD); python3 -i -c 'from parser import *; p = Parser()'
 
 test: all $(PYTESTFILES)
 	@#cd $(BUILD); python main.py

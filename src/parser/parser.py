@@ -114,3 +114,9 @@ class Parser(object):
 		p =  parse.FeatureChartParser(g)
 		return p.parse(text)
 
+	def showParse(self, text):
+		trees = list(self.morph_character_parsing(text))
+		print(trees)
+		for t in trees:
+			t.draw()
+
