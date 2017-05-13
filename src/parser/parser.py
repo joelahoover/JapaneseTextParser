@@ -64,6 +64,17 @@ class Parser(object):
 			rules += "\n[" + ",".join(syntaxfs + ["PRED = '" + morphfs[0] + "'"]) + "] -> '" + tag + "'"
 		return (rules, tags)
 
+	def morphword_pairs_to_rules(self, word_pairs):
+		"""
+		Returns a sting containing the rules that recognize a sequence of characters into the given words.
+		"""
+		rules = ""
+		for (mw, w) in word_pairs:
+			morphfs = list(filter(None, re.split('([+-]?[^+-]+)', mw)))
+			syntaxfs = [featureMap[f] for f in morphfs[1:]]
+			rules += "\n[" + ",".join(syntaxfs + ["PRED = '" + morphfs[0] + "'"]) + "] -> '" + "' '".join(w) + "'"
+		return rules
+
 	def parse_sentence(self, sentence):
 		"""
 		Returns a list of the possible parse trees given a sentence.
