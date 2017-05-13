@@ -19,6 +19,10 @@ def test_morph3():
 	splitted = parser.morphological_split(u'あった')
 	assert set(splitted) == set([u'ある-Anim+Past+IV'])
 
+def test_allwords1():
+	words = parser.get_all_words(u'犬があった')
+	assert set(words) == set([(u'犬+Anim+Nom+NP',u'犬が'), (u'ある-Anim+Past+IV',u'あった')])
+
 def test_features1():
 	assert parser.words_to_rules([u'犬+Anim+Nom+NP',u'いる+Anim+Pres+IV']) == (u'\n[ANIM = True,CASE = nom,*type* = NP,PRED = \'犬\'] -> \'tag1\'\n[ANIM = True,TENSE = pres,*type* = IV,PRED = \'いる\'] -> \'tag2\'', [('tag1',u'犬+Anim+Nom+NP'), ('tag2',u'いる+Anim+Pres+IV')])
 

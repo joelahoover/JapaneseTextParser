@@ -38,6 +38,16 @@ class Parser(object):
 		"""
 		return map(lambda x: x[0], self.segmenter.apply(text, dir = 'up'))
 
+	def get_all_words(self, text):
+		"""
+		Returns a list of tuples containing all the possible words in the text along with their morphological analysis.
+		"""
+		morphwords = map(lambda x: x[0], self.allwords.apply(text, dir = 'up'))
+		words = []
+		for mw in morphwords:
+			words.extend(map(lambda x: (mw, x[0]), self.lexicon.apply(mw, dir = 'down')))
+		return words
+
 	def words_to_rules(self, words):
 		"""
 		Returns a tuple contining a string of the grammar rules and a list tuples of tags and words.
