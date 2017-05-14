@@ -3,112 +3,78 @@
 Multichar_Symbols +Anim -Anim +Nom +Gen +Dat +Acc +Pres +Past +Dobj +DobjNom +Pass -Pass +Neg +Polite
 
 LEXICON Root
-
 Name ;
 Noun ;
 Verb ;
 
-
 LEXICON Noun
-
 book:本        Ninf-A;
 dog:犬         Ninf+A;
 ramen:ラーメン Ninf-A;
 apple:りんご   Ninf-A;
 
-
 LEXICON Name
-
 Mary:メアリー  NameInfFem;
 John:ジョン    NameInfMasc;
 Ando:安藤      NameInfMasc;
 Michiko:みちこ NameInfFem;
 
-
 LEXICON NameInfFem
-
 0            NameInf;
 _chan:ちゃん Ninf+A;
 
-
 LEXICON NameInfMasc
-
 0         NameInf;
 _kun:くん Ninf+A;
 
-
 LEXICON NameInf
-
 0            Ninf+A;
 _san:さん    Ninf+A;
 _sensei:先生 Ninf+A;
 
-
 LEXICON Ninf+A
-
 +Anim:0 Ninf;
 
-
 LEXICON Ninf-A
-
 -Anim:0 Ninf;
 
-
 LEXICON Ninf
-
 +Nom:が NP;
 +Gen:の NP;
 +Dat:に NP;
 +Acc:を NP;
 
-
 LEXICON NP
-
 +NP:0 #;
 
-
 LEXICON Verb
-
 \x.Exists(x)-Dobj-Anim:あ           v_ru_conj;
 \x.Exists(x)-Dobj+Anim:い           v1_base;
 \x\y.Eats(y,x)+Dobj:食べ            v1_base;
 \x\y.Understands(y,x)+DobjNom:わか  v_ru_conj;
 
-
 LEXICON v1_base
-
 -Pass:0    v1_mod;
 +Pass:られ v1_mod;
 
-
 LEXICON v1_mod
-
 0  v1_plain;
 0  v_masu_stem;
 
-
 LEXICON v1_plain
-
 +Pres:る V;
 +Past:た V;
 
-
 LEXICON v_masu_stem
-
 +Polite+Pres:ます V;
 +Polite+Past:ました V;
 +Polite+Neg+Pres:ません V;
 +Polite+Neg+Past:ませんでした V;
 
-
 LEXICON v_ru_conj
-
 -Pass+Pres:る V;
 -Pass+Past:った V;
 
-
 LEXICON V
-
 +V:0 #;
-
 
