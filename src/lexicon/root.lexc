@@ -1,6 +1,6 @@
 !!! Root of Japanese Lexicon - root.lexc !!!
 
-Multichar_Symbols +Anim -Anim +Nom +Gen +Dat +Acc +Pres +Past +Dobj +DobjNom
+Multichar_Symbols +Anim -Anim +Nom +Gen +Dat +Acc +Pres +Past +Dobj +DobjNom +Pass +Neg +Polite
 
 LEXICON Root
 
@@ -14,6 +14,7 @@ LEXICON Noun
 本 Ninf-A;
 犬 Ninf+A;
 ラーメン Ninf-A;
+りんご Ninf-A;
 
 
 LEXICON Name
@@ -26,12 +27,14 @@ LEXICON Name
 
 LEXICON NameInfFem
 
+0 Ninf+A;
 さん Ninf+A;
 ちゃん Ninf+A;
 
 
 LEXICON NameInfMasc
 
+0 Ninf+A;
 さん Ninf+A;
 くん Ninf+A;
 
@@ -62,25 +65,35 @@ LEXICON NP
 LEXICON Verb
 
 ある-Anim:あ         v_ru_conj;
-いる+Anim:い         v1_conj;
-食べる+Dobj:食べ     v_ru_conj;
-わかる+DobjNom:わか  v1_conj;
+いる+Anim:い         v1_base;
+食べる+Dobj:食べ     v1_base;
+わかる+DobjNom:わか  v_ru_conj;
 
 
-LEXICON v1
+LEXICON v1_base
 
-る:0 v1_conj;
-
-
-LEXICON v_ru
-
-る:0 v_ru_conj;
+0          v1_mod;
++Pass:られ v1_mod;
 
 
-LEXICON v1_conj
+LEXICON v1_mod
+
+0          v1_plain;
++Polite:ま v_formal;
+
+
+LEXICON v1_plain
 
 +Pres:る V;
 +Past:た V;
+
+
+LEXICON v_formal
+
++Pres:す V;
++Past:した V;
++Neg+Pres:せん V;
++Neg+Past:せんでした V;
 
 
 LEXICON v_ru_conj

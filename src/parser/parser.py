@@ -8,8 +8,8 @@ grammarText = u"""
 %start S
 S[TENSE=?t] -> NP[ANIM=?a, CASE=nom] VP[ANIM=?a, TENSE=?t]
 NP[ANIM=?a, CASE=?c] -> NP[CASE=gen] NP[ANIM=?a, CASE=?c]
-VP[TENSE=?t, ANIM=?a] -> V[TENSE=?t, ANIM=?a, DOBJ=None]
-VP[TENSE=?t, ANIM=?a] -> NP[CASE=?c] V[TENSE=?t, ANIM=?a, DOBJ=?c]
+VP[TENSE=?t, ANIM=?a] -> V[TENSE=?t, ANIM=?a, DOBJ=None, Pass=False]
+VP[TENSE=?t, ANIM=?a] -> NP[CASE=?c] V[TENSE=?t, ANIM=?a, DOBJ=?c, Pass=False]
 """
 
 featureMap = {
@@ -24,7 +24,10 @@ featureMap = {
 		"+Pres": "TENSE = pres",
 		"+Past": "TENSE = past",
 		"+Dobj": "DOBJ = acc",
-		"+DobjNom": "DOBJ = nom"
+		"+DobjNom": "DOBJ = nom",
+		"+Pass": "PASSIVE = True",
+		"+Neg": "NEGATIVE = True",
+		"+Polite": "POLITE = True"
 }
 
 class Parser(object):

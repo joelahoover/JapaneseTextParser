@@ -46,15 +46,26 @@ def test_morph_parse():
 				(V[-ANIM,PRED='ある',TENSE='past'] ある-Anim+Past+IV)))
 		""", read_node=FeatStructNonterminal)])
 
-def test_character_parse1():
-	trees = parser.morph_parse(u'犬の本があった')
-	assert len(trees) >= 1
-	return (trees, [Tree.fromstring(u"""
-		(S[TENSE='past']
-			(NP[-ANIM,CASE='nom']
-				(NP[+ANIM,CASE='gen',PRED='犬'] 犬 の)
-				(NP[-ANIM,CASE='nom',PRED='本'] 本 が))
-			(VP[-ANIM,TENSE='past']
-				(V[-ANIM,PRED='ある',TENSE='past'] あ っ た)))
-		""", read_node=FeatStructNonterminal)])
+def test_parseable():
+	p = lambda s: list(parser.morph_character_parsing(s))
+	assert len(p(u'本がある')) >= 1
+	assert len(p(u'みちこがいる')) >= 1
+	assert len(p(u'犬がいる')) >= 1
+	assert len(p(u'犬がいた')) >= 1
+	assert len(p(u'犬がいます')) >= 1
+	assert len(p(u'犬がいました')) >= 1
+	assert len(p(u'犬がいません')) >= 1
+	assert len(p(u'犬がいませんでした')) >= 1
+	assert len(p(u'犬がりんごを食べる')) >= 1
+	assert len(p(u'犬がメアリーのラーメンを食べませんでした')) >= 1
+	#assert len(p(u'')) >= 1
+
+def test_nonparsable():
+	p = lambda s: list(parser.morph_character_parsing(s))
+	assert len(p(u'犬がある')) == 0
+	assert len(p(u'本がいる')) == 0
+	assert len(p(u'ジョンがある')) == 0
+	assert len(p(u'犬が食べる')) == 0
+	assert len(p(u'本のある')) == 0
+	#assert len(p(u'')) == 0
 
