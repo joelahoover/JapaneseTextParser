@@ -83,8 +83,8 @@ LEXICON v1_base
 
 LEXICON v1_mod
 
-0          v1_plain;
-+Polite:ま v_formal;
+0  v1_plain;
+0  v_masu_stem;
 
 
 LEXICON v1_plain
@@ -93,12 +93,12 @@ LEXICON v1_plain
 +Past:た V;
 
 
-LEXICON v_formal
+LEXICON v_masu_stem
 
-+Pres:す V;
-+Past:した V;
-+Neg+Pres:せん V;
-+Neg+Past:せんでした V;
++Polite+Pres:ます V;
++Polite+Past:ました V;
++Polite+Neg+Pres:ません V;
++Polite+Neg+Past:ませんでした V;
 
 
 LEXICON v_ru_conj
