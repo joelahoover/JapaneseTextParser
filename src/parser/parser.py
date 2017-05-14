@@ -8,12 +8,12 @@ grammarText = u"""
 %start S
 S[TENSE=?t, PRED=<?v(?subj)>] -> NP[ANIM=?a, CASE=nom, PRED=?subj] VP[ANIM=?a, TENSE=?t, PRED=?v]
 NP[ANIM=?a, CASE=?c, PRED=<?n & mod(?m)>] -> NP[CASE=gen, PRED=?m, DROPPED=False] NP[ANIM=?a, CASE=?c, PRED=?n, DROPPED=False]
-VP[TENSE=?t, ANIM=?a] -> V[TENSE=?t, ANIM=?a, DOBJ=None, PASS=False]
+VP[TENSE=?t, ANIM=?a, PRED=?v] -> V[TENSE=?t, ANIM=?a, DOBJ=None, PRED=?v, PASS=False]
 VP[TENSE=?t, ANIM=?a, PRED=<?v(?obj)>] -> NP[CASE=?c, PRED=?obj] V[TENSE=?t, ANIM=?a, DOBJ=?c, PRED=?v, PASS=False]
-VP[TENSE=?t] -> NP[CASE=dat, ANIM=?a] V[TENSE=?t, ANIM=?a, DOBJ=acc, PASS=True]
-VP[TENSE=?t] -> NP[CASE=dat, ANIM=?a] V[TENSE=?t, ANIM=?a, DOBJ=nom, PASS=True]
+VP[TENSE=?t, PRED=<\\x.(?v(x)(?subj))>] -> NP[CASE=dat, ANIM=?a, PRED=?subj] V[TENSE=?t, ANIM=?a, DOBJ=acc, PRED=?v, PASS=True]
+#VP[TENSE=?t] -> NP[CASE=dat, ANIM=?a] V[TENSE=?t, ANIM=?a, DOBJ=nom, PASS=True]
 
-NP[PRED=<'Ref'>,DROPPED=True] ->
+NP[PRED=<Ref>,DROPPED=True] ->
 """
 
 featureMap = {
@@ -73,7 +73,7 @@ class Parser(object):
 			tags.append((tag,w))
 			morphfs = list(filter(None, re.split('([+-]?[^+-]+)', w)))
 			syntaxfs = [featureMap[f] for f in morphfs[1:]]
-			rules += "\n[" + ",".join(syntaxfs + ["PRED = '" + morphfs[0] + "'"]) + "] -> '" + tag + "'"
+			rules += "\n[" + ",".join(syntaxfs + ["PRED = <" + morphfs[0] + ">"]) + "] -> '" + tag + "'"
 		return (rules, tags)
 
 	def morphword_pairs_to_rules(self, word_pairs):
@@ -84,7 +84,7 @@ class Parser(object):
 		for (mw, w) in word_pairs:
 			morphfs = list(filter(None, re.split('([+-]?[^+-]+)', mw)))
 			syntaxfs = [featureMap[f] for f in morphfs[1:]]
-			rules += "\n[" + ",".join(syntaxfs + ["PRED =<" + morphfs[0] + ">"]) + "] -> '" + "' '".join(w) + "'"
+			rules += "\n[" + ",".join(syntaxfs + ["PRED = <" + morphfs[0] + ">"]) + "] -> '" + "' '".join(w) + "'"
 		return rules
 
 	def parse_sentence(self, sentence):

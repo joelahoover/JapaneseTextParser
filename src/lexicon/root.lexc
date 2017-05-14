@@ -69,10 +69,10 @@ LEXICON NP
 
 LEXICON Verb
 
-ある-Dobj-Anim:あ         v_ru_conj;
-いる-Dobj+Anim:い         v1_base;
+\x.ある(x)-Dobj-Anim:あ         v_ru_conj;
+\x.いる(x)-Dobj+Anim:い         v1_base;
 \x\y.食べる(y,x)+Dobj:食べ     v1_base;
-わかる+DobjNom:わか  v_ru_conj;
+\x\y.わかる(y,x)+DobjNom:わか  v_ru_conj;
 
 
 LEXICON v1_base
