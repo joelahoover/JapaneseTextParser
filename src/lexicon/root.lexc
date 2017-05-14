@@ -4,6 +4,7 @@ Multichar_Symbols +Anim -Anim +Nom +Gen +Dat +Acc +Pres +Past +Dobj +DobjNom
 
 LEXICON Root
 
+Name ;
 Noun ;
 Verb ;
 
@@ -13,6 +14,26 @@ LEXICON Noun
 本 Ninf-A;
 犬 Ninf+A;
 ラーメン Ninf-A;
+
+
+LEXICON Name
+
+メアリー NameInfFem;
+ジョン NameInfMasc;
+安藤 NameInfMasc;
+みちこ NameInfFem;
+
+
+LEXICON NameInfFem
+
+さん Ninf+A;
+ちゃん Ninf+A;
+
+
+LEXICON NameInfMasc
+
+さん Ninf+A;
+くん Ninf+A;
 
 
 LEXICON Ninf+A
