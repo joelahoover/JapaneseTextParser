@@ -48,10 +48,10 @@ LEXICON NP
 +NP:0 #;
 
 LEXICON Verb
-\x.Exists(x)-Dobj-Anim:あ           v_ru_conj;
+\x.Exists(x)-Dobj-Anim:あ           v5r_base;
 \x.Exists(x)-Dobj+Anim:い           v1_base;
 \x\y.Eats(y,x)+Dobj:食べ            v1_base;
-\x\y.Understands(y,x)+DobjNom:わか  v_ru_conj;
+\x\y.Understands(y,x)+DobjNom:わか  v5r_base;
 
 LEXICON v1_base
 -Pass:0    v1_mod;
@@ -65,15 +65,23 @@ LEXICON v1_plain
 +Pres:る V;
 +Past:た V;
 
+LEXICON v5r_base
+-Pass:0    v5r_mod;
++Pass:られ v1_mod;
+
+LEXICON v5r_mod
+0    v5r_plain;
+0:り v_masu_stem;
+
+LEXICON v5r_plain
++Pres:る   V;
++Past:った V;
+
 LEXICON v_masu_stem
 +Polite+Pres:ます V;
 +Polite+Past:ました V;
 +Polite+Neg+Pres:ません V;
 +Polite+Neg+Past:ませんでした V;
-
-LEXICON v_ru_conj
--Pass+Pres:る V;
--Pass+Past:った V;
 
 LEXICON V
 +V:0 #;
