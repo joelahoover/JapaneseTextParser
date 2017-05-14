@@ -23,7 +23,8 @@ featureMap = {
 		"+Acc": "CASE = acc",
 		"+Pres": "TENSE = pres",
 		"+Past": "TENSE = past",
-		"+Dobj": "DOBJ = acc"
+		"+Dobj": "DOBJ = acc",
+		"+DobjNom": "DOBJ = nom"
 }
 
 class Parser(object):
