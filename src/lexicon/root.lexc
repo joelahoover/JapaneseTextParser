@@ -14,6 +14,9 @@ ramen:ラーメン  Ninf-A;
 apple:りんご    Ninf-A;
 English:英語    Ninf-A;
 Japanese:日本語 Ninf-A;
+world:世        Ninf-A;
+middle:中       Ninf-A;
+society:世の中  Ninf-A;
 
 LEXICON Name
 Mary:メアリー  NameInfFem;
