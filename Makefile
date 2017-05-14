@@ -21,7 +21,7 @@ lexicon: $(FSTFILES)
 
 python: $(PYBUILDFILES)
 
-run: $(PYBUILDFILES)
+run: all
 	cd $(BUILD); python3 -i -c 'from parser import *; p = Parser()'
 
 test: all $(PYTESTFILES)
