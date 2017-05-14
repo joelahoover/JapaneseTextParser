@@ -13,25 +13,25 @@ def test_morph1():
 
 def test_morph2():
 	splitted = parser.morphological_split(u'犬がいる')
-	assert set(splitted) == set([u'dog+Anim+Nom+NP^\\x.Exists(x)-Dobj+Anim-Pass+Pres+V'])
+	assert set(splitted) == set([u'dog+Anim+Nom+NP^\\x.Exists(x)-Dobj+Anim-Vmod+Pres+V'])
 
 def test_morph3():
 	splitted = parser.morphological_split(u'あった')
-	assert set(splitted) == set([u'\\x.Exists(x)-Dobj-Anim-Pass+Past+V'])
+	assert set(splitted) == set([u'\\x.Exists(x)-Dobj-Anim-Vmod+Past+V'])
 
 def test_allwords1():
 	words = parser.get_all_words(u'犬があった')
-	assert set(words) == set([(u'dog+Anim+Nom+NP',u'犬が'), (u'\\x.Exists(x)-Dobj-Anim-Pass+Past+V',u'あった')])
+	assert set(words) == set([(u'dog+Anim+Nom+NP',u'犬が'), (u'\\x.Exists(x)-Dobj-Anim-Vmod+Past+V',u'あった')])
 
 def test_allwordsrules1():
-	words = [(u'\\x.exists(x)-Dobj-Anim-Pass+Past+V',u'あった'), (u'dog+Anim+Nom+NP',u'犬が')]
-	assert parser.morphword_pairs_to_rules(words) == u"\n[DOBJ = None,ANIM = False,PASS = False,TENSE = past,*type* = V,PRED = <\\x.exists(x)>] -> 'あ' 'っ' 'た'\n[ANIM = True,CASE = nom,*type* = NP,PRED = <dog>] -> '犬' 'が'"
+	words = [(u'\\x.exists(x)-Dobj-Anim-Vmod+Past+V',u'あった'), (u'dog+Anim+Nom+NP',u'犬が')]
+	assert parser.morphword_pairs_to_rules(words) == u"\n[DOBJ = None,ANIM = False,MOD = None,TENSE = past,*type* = V,PRED = <\\x.exists(x)>] -> 'あ' 'っ' 'た'\n[ANIM = True,CASE = nom,*type* = NP,PRED = <dog>] -> '犬' 'が'"
 
 def test_features1():
-	assert parser.words_to_rules([u'dog+Anim+Nom+NP',u'\\x.Exists(x)-Dobj+Anim-Pass+Pres+V']) == (u'\n[ANIM = True,CASE = nom,*type* = NP,PRED = <dog>] -> \'tag1\'\n[DOBJ = None,ANIM = True,PASS = False,TENSE = pres,*type* = V,PRED = <\\x.Exists(x)>] -> \'tag2\'', [('tag1',u'dog+Anim+Nom+NP'), ('tag2',u'\\x.Exists(x)-Dobj+Anim-Pass+Pres+V')])
+	assert parser.words_to_rules([u'dog+Anim+Nom+NP',u'\\x.Exists(x)-Dobj+Anim-Vmod+Pres+V']) == (u'\n[ANIM = True,CASE = nom,*type* = NP,PRED = <dog>] -> \'tag1\'\n[DOBJ = None,ANIM = True,MOD = None,TENSE = pres,*type* = V,PRED = <\\x.Exists(x)>] -> \'tag2\'', [('tag1',u'dog+Anim+Nom+NP'), ('tag2',u'\\x.Exists(x)-Dobj+Anim-Vmod+Pres+V')])
 
 def test_parse1():
-	parse = parser.parse_sentence(u'dog+Anim+Nom+NP^\\x.Exists(x)-Dobj+Anim-Pass+Pres+V');
+	parse = parser.parse_sentence(u'dog+Anim+Nom+NP^\\x.Exists(x)-Dobj+Anim-Vmod+Pres+V');
 	assert len(parse) >= 1
 
 def test_morph_parse():
