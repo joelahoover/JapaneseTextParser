@@ -12,6 +12,8 @@ VP[TENSE=?t, ANIM=?a] -> V[TENSE=?t, ANIM=?a, DOBJ=None, PASS=False]
 VP[TENSE=?t, ANIM=?a] -> NP[CASE=?c] V[TENSE=?t, ANIM=?a, DOBJ=?c, PASS=False]
 VP[TENSE=?t] -> NP[CASE=dat, ANIM=?a] V[TENSE=?t, ANIM=?a, DOBJ=acc, PASS=True]
 VP[TENSE=?t, SUBJ=False] -> NP[CASE=dat, ANIM=?a] V[TENSE=?t, ANIM=?a, DOBJ=acc, PASS=True]
+
+NP[PRED='Ref'] ->
 """
 
 featureMap = {
@@ -25,6 +27,7 @@ featureMap = {
 		"+Acc": "CASE = acc",
 		"+Pres": "TENSE = pres",
 		"+Past": "TENSE = past",
+		"-Dobj": "DOBJ = None",
 		"+Dobj": "DOBJ = acc",
 		"+DobjNom": "DOBJ = nom",
 		"+Pass": "PASS = True",
