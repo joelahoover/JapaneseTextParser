@@ -58,6 +58,8 @@ def test_parseable():
 	assert len(p(u'犬がいませんでした')) >= 1
 	assert len(p(u'犬がりんごを食べる')) >= 1
 	assert len(p(u'犬がメアリーのラーメンを食べませんでした')) >= 1
+	assert len(p(u'りんごが犬に食べられた')) >= 1
+	#assert len(p(u'安藤先生の本にわかれる')) >= 1
 	#assert len(p(u'')) >= 1
 
 def test_nonparsable():
@@ -67,5 +69,6 @@ def test_nonparsable():
 	assert len(p(u'ジョンがある')) == 0
 	assert len(p(u'犬が食べる')) == 0
 	assert len(p(u'本のある')) == 0
+	assert len(p(u'犬がりんごを食べられた')) == 0
 	#assert len(p(u'')) == 0
 

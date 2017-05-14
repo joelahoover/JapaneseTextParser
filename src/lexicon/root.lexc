@@ -27,16 +27,21 @@ LEXICON Name
 
 LEXICON NameInfFem
 
-0 Ninf+A;
-さん Ninf+A;
+0 NameInf;
 ちゃん Ninf+A;
 
 
 LEXICON NameInfMasc
 
+0 NameInf;
+くん Ninf+A;
+
+
+LEXICON NameInf
+
 0 Ninf+A;
 さん Ninf+A;
-くん Ninf+A;
+先生 Ninf+A;
 
 
 LEXICON Ninf+A

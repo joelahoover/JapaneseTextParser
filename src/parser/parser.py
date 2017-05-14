@@ -8,8 +8,9 @@ grammarText = u"""
 %start S
 S[TENSE=?t] -> NP[ANIM=?a, CASE=nom] VP[ANIM=?a, TENSE=?t]
 NP[ANIM=?a, CASE=?c] -> NP[CASE=gen] NP[ANIM=?a, CASE=?c]
-VP[TENSE=?t, ANIM=?a] -> V[TENSE=?t, ANIM=?a, DOBJ=None, Pass=False]
-VP[TENSE=?t, ANIM=?a] -> NP[CASE=?c] V[TENSE=?t, ANIM=?a, DOBJ=?c, Pass=False]
+VP[TENSE=?t, ANIM=?a] -> V[TENSE=?t, ANIM=?a, DOBJ=None, PASS=False]
+VP[TENSE=?t, ANIM=?a] -> NP[CASE=?c] V[TENSE=?t, ANIM=?a, DOBJ=?c, PASS=False]
+VP[TENSE=?t] -> NP[CASE=dat, ANIM=?a] V[TENSE=?t, ANIM=?a, DOBJ=acc, PASS=True]
 """
 
 featureMap = {
@@ -25,7 +26,7 @@ featureMap = {
 		"+Past": "TENSE = past",
 		"+Dobj": "DOBJ = acc",
 		"+DobjNom": "DOBJ = nom",
-		"+Pass": "PASSIVE = True",
+		"+Pass": "PASS = True",
 		"+Neg": "NEGATIVE = True",
 		"+Polite": "POLITE = True"
 }
