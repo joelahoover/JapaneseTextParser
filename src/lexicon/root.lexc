@@ -71,7 +71,7 @@ LEXICON Verb
 
 ある-Dobj-Anim:あ         v_ru_conj;
 いる-Dobj+Anim:い         v1_base;
-食べる+Dobj:食べ     v1_base;
+\x\y.食べる(y,x)+Dobj:食べ     v1_base;
 わかる+DobjNom:わか  v_ru_conj;
 
 
