@@ -7,13 +7,16 @@ import attapply
 grammarText = u"""
 %start S
 S[TENSE=?t, PRED=<?v(?subj)>] -> NP[ANIM=?a, CASE=nom, PRED=?subj] VP[ANIM=?a, TENSE=?t, PRED=?v]
-NP[ANIM=?a, CASE=?c, PRED=<?n & mod(?m)>] -> NP[CASE=gen, PRED=?m, DROPPED=False] NP[ANIM=?a, CASE=?c, PRED=?n, DROPPED=False]
+NP[ANIM=?a, CASE=?c, PRED=<MOD(?n,?m)>] -> NP[CASE=gen, PRED=?m, DROPPED=False] NP[ANIM=?a, CASE=?c, PRED=?n, DROPPED=False]
 VP[TENSE=?t, ANIM=?a, PRED=?v] -> V[TENSE=?t, ANIM=?a, DOBJ=None, PRED=?v, PASS=False]
 VP[TENSE=?t, ANIM=?a, PRED=<?v(?obj)>] -> NP[CASE=?c, PRED=?obj] V[TENSE=?t, ANIM=?a, DOBJ=?c, PRED=?v, PASS=False]
 VP[TENSE=?t, PRED=<\\x.(?v(x)(?subj))>] -> NP[CASE=dat, ANIM=?a, PRED=?subj] V[TENSE=?t, ANIM=?a, DOBJ=acc, PRED=?v, PASS=True]
 #VP[TENSE=?t] -> NP[CASE=dat, ANIM=?a] V[TENSE=?t, ANIM=?a, DOBJ=nom, PASS=True]
 
-NP[PRED=<Ref>,DROPPED=True] ->
+NP[PRED=<Ref>, CASE=nom, DROPPED=True] ->
+NP[PRED=<Ref>, CASE=dat, DROPPED=True] ->
+NP[PRED=<Ref>, CASE=gen, DROPPED=True] ->
+NP[PRED=<Ref>, CASE=acc, DROPPED=True] ->
 """
 
 featureMap = {
@@ -124,7 +127,7 @@ class Parser(object):
 		"""
 		lexRules = self.morphword_pairs_to_rules(self.get_all_words(text))
 		g = grammar.FeatureGrammar.fromstring(self.grammarText + lexRules)
-		p =  parse.FeatureChartParser(g)
+		p =  parse.FeatureEarleyChartParser(g)
 		return p.parse(text)
 
 	def showParse(self, text):
