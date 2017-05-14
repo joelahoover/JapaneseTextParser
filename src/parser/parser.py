@@ -12,6 +12,8 @@ VP[TENSE=?t, ANIM=?a, PRED=?v] -> V[TENSE=?t, ANIM=?a, DOBJ=None, PRED=?v, MOD=N
 VP[TENSE=?t, ANIM=?a, PRED=<?v(?obj)>] -> NP[CASE=?c, PRED=?obj] V[TENSE=?t, ANIM=?a, DOBJ=?c, PRED=?v, MOD=None]
 VP[TENSE=?t, PRED=<\\x.(?v(x)(Uns))>] -> V[TENSE=?t, DOBJ=acc, PRED=?v, MOD=pass]
 VP[TENSE=?t, PRED=<\\x.(?v(x)(?subj))>] -> NP[CASE=dat, ANIM=?a, PRED=?subj] V[TENSE=?t, ANIM=?a, DOBJ=acc, PRED=?v, MOD=pass]
+VP[TENSE=?t, ANIM=?a, PRED=<?v(?obj)>] -> NP[CASE=nom, PRED=?obj] V[TENSE=?t, ANIM=?a, DOBJ=acc, PRED=?v, MOD=potl]
+VP[TENSE=?t, ANIM=?a, PRED=<?v(?obj)>] -> NP[CASE=nom, PRED=?obj] V[TENSE=?t, ANIM=?a, DOBJ=nom, PRED=?v, MOD=potl]
 
 NP[PRED=<Ref>, CASE=nom, DROPPED=True] ->
 NP[PRED=<Ref>, CASE=dat, DROPPED=True] ->
@@ -35,6 +37,7 @@ featureMap = {
 		"+DobjNom": "DOBJ = nom",
 		"-Vmod": "MOD = None",
 		"+Pass": "MOD = pass",
+		"+Potl": "MOD = potl",
 		"+Neg": "NEGATIVE = True",
 		"+Polite": "POLITE = True"
 }
