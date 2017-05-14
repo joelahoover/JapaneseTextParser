@@ -11,37 +11,37 @@ Verb ;
 
 LEXICON Noun
 
-本 Ninf-A;
-犬 Ninf+A;
-ラーメン Ninf-A;
-りんご Ninf-A;
+book:本        Ninf-A;
+dog:犬         Ninf+A;
+ramen:ラーメン Ninf-A;
+apple:りんご   Ninf-A;
 
 
 LEXICON Name
 
-メアリー NameInfFem;
-ジョン NameInfMasc;
-安藤 NameInfMasc;
-みちこ NameInfFem;
+Mary:メアリー  NameInfFem;
+John:ジョン    NameInfMasc;
+Ando:安藤      NameInfMasc;
+Michiko:みちこ NameInfFem;
 
 
 LEXICON NameInfFem
 
-0 NameInf;
-ちゃん Ninf+A;
+0            NameInf;
+_chan:ちゃん Ninf+A;
 
 
 LEXICON NameInfMasc
 
-0 NameInf;
-くん Ninf+A;
+0         NameInf;
+_kun:くん Ninf+A;
 
 
 LEXICON NameInf
 
-0 Ninf+A;
-さん Ninf+A;
-先生 Ninf+A;
+0            Ninf+A;
+_san:さん    Ninf+A;
+_sensei:先生 Ninf+A;
 
 
 LEXICON Ninf+A
@@ -69,10 +69,10 @@ LEXICON NP
 
 LEXICON Verb
 
-\x.ある(x)-Dobj-Anim:あ         v_ru_conj;
-\x.いる(x)-Dobj+Anim:い         v1_base;
-\x\y.食べる(y,x)+Dobj:食べ     v1_base;
-\x\y.わかる(y,x)+DobjNom:わか  v_ru_conj;
+\x.exists(x)-Dobj-Anim:あ           v_ru_conj;
+\x.exists(x)-Dobj+Anim:い           v1_base;
+\x\y.eats(y,x)+Dobj:食べ            v1_base;
+\x\y.understands(y,x)+DobjNom:わか  v_ru_conj;
 
 
 LEXICON v1_base
