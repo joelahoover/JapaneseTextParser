@@ -1,6 +1,6 @@
 !!! Root of Japanese Lexicon - root.lexc !!!
 
-Multichar_Symbols +Anim -Anim +Nom +Gen +Dat +Acc +Pres +Past +Dobj +DobjNom +Pass +Neg +Polite
+Multichar_Symbols +Anim -Anim +Nom +Gen +Dat +Acc +Pres +Past +Dobj +DobjNom +Pass -Pass +Neg +Polite
 
 LEXICON Root
 
@@ -77,7 +77,7 @@ LEXICON Verb
 
 LEXICON v1_base
 
-0          v1_mod;
+-Pass:0    v1_mod;
 +Pass:られ v1_mod;
 
 
@@ -103,8 +103,8 @@ LEXICON v_formal
 
 LEXICON v_ru_conj
 
-+Pres:る V;
-+Past:った V;
+-Pass+Pres:る V;
+-Pass+Past:った V;
 
 
 LEXICON V

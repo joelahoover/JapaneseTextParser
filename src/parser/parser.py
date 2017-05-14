@@ -11,6 +11,7 @@ NP[ANIM=?a, CASE=?c] -> NP[CASE=gen] NP[ANIM=?a, CASE=?c]
 VP[TENSE=?t, ANIM=?a] -> V[TENSE=?t, ANIM=?a, DOBJ=None, PASS=False]
 VP[TENSE=?t, ANIM=?a] -> NP[CASE=?c] V[TENSE=?t, ANIM=?a, DOBJ=?c, PASS=False]
 VP[TENSE=?t] -> NP[CASE=dat, ANIM=?a] V[TENSE=?t, ANIM=?a, DOBJ=acc, PASS=True]
+VP[TENSE=?t, SUBJ=False] -> NP[CASE=dat, ANIM=?a] V[TENSE=?t, ANIM=?a, DOBJ=acc, PASS=True]
 """
 
 featureMap = {
@@ -27,6 +28,7 @@ featureMap = {
 		"+Dobj": "DOBJ = acc",
 		"+DobjNom": "DOBJ = nom",
 		"+Pass": "PASS = True",
+		"-Pass": "PASS = False",
 		"+Neg": "NEGATIVE = True",
 		"+Polite": "POLITE = True"
 }
@@ -97,7 +99,8 @@ class Parser(object):
 				if type(t[p]) == Tree:
 					t[p].set_label(t[p].label().substitute_bindings(tagWordsVars))
 				else:
-					t[p] = tagWordsDict[t[p]]
+					if(t[p][0:3] == 'tag'):
+						t[p] = tagWordsDict[t[p]]
 			trees += [t]
 		return trees
 
