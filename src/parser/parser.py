@@ -38,7 +38,6 @@ featureMap = {
 		"-Vmod": "MOD = None",
 		"+Pass": "MOD = pass",
 		"+Potl": "MOD = potl",
-		"+Neg": "NEGATIVE = True",
 		"+Polite": "POLITE = True"
 }
 
